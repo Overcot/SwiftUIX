@@ -10,7 +10,7 @@ import SwiftUI
 @usableFromInline
 struct UINavigationControllerConfigurator: UIViewControllerRepresentable {
     @usableFromInline
-    typealias UIViewControllerType = UIViewController
+    typealias UIViewControllerType = UINavigationController
     
     @usableFromInline
     let configure: (UINavigationController) -> Void
@@ -21,12 +21,12 @@ struct UINavigationControllerConfigurator: UIViewControllerRepresentable {
     }
     
     @usableFromInline
-    func makeUIViewController(context: Context) -> UIViewController {
+    func makeUIViewController(context: Context) -> UINavigationController {
         UIViewControllerType()
     }
     
     @usableFromInline
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
         uiViewController.nearestNavigationController.map(configure)
     }
 }
